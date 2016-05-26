@@ -3,3 +3,4 @@ target/
 .tern-project
 .project
 .classpath
+src/main/webapp/bower_components/
