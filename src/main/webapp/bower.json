@@ -1,0 +1,20 @@
+{
+  "name": "dependencies",
+  "authors": [
+    "Alexandre Zanelatto <alexandre.zanelatto@gmail.com>"
+  ],
+  "description": "front-end dependencies",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.5"
+  }
+}
