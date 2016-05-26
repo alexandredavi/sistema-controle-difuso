@@ -1,0 +1,26 @@
+.container {
+    margin-top: 15px;
+}
+
+.glyphicon-remove {
+    color: firebrick;
+}
+
+.btn {
+    margin-top: 5px;
+}
+
+.inputs-group {
+    border: 2px dashed #CCCCCC;	
+    border-radius: 0px 0px 5px 5px; 
+    margin-top: 5px;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-bottom: 8px;
+    padding-right: 8px;
+    margin-bottom: 5px;
+}
+
+.panel-title {
+    margin-bottom: 5px;
+}
