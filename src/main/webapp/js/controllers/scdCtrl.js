@@ -76,4 +76,8 @@ angular.module("scd").controller("scdCtrl", function ($scope) {
         $scope.termoObjetivo.condicoes.push({});
     }
     
+    $scope.processar = function(variaveis) {
+        console.log(variaveis);
+    }
+    
 });
