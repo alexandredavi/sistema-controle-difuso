@@ -81,7 +81,7 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
     }
     
     $scope.processar = function(variaveis) {
-        $http.post("localhost:8080/rest/algoritmoREST", variaveis).success(function (data) {
+        $http.post("/sistema-controle-difuso/rest/algoritmoREST", variaveis).success(function (data) {
             console.log("oook");
         });
     }
