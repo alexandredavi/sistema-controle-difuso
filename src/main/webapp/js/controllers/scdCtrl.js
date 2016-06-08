@@ -1,4 +1,4 @@
-angular.module("scd").controller("scdCtrl", function ($scope) {
+angular.module("scd").controller("scdCtrl", function ($scope, $http) {
 
     $scope.variaveis = [];
     $scope.variavelObjetivo;
@@ -77,7 +77,9 @@ angular.module("scd").controller("scdCtrl", function ($scope) {
     }
     
     $scope.processar = function(variaveis) {
-        console.log(variaveis);
+        $http.post("localhost:8080/rest/algoritmoREST", variaveis).success(function (data) {
+            console.log("oook");
+        });
     }
     
 });
