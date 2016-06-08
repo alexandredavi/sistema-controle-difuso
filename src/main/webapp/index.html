@@ -17,40 +17,49 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Variaveis</div>
+                    <div class="panel-heading">Variáveis</div>
                     <table class="table table-striped table-bordered">
                         <tr>
                             <th>Descrição</th>
                             <th>Objetivo</th>
-                            <th></th>
-                            <th></th>
+                            <th colspan="2">Ações</th>
                         </tr>
                         <tr ng-repeat="variavel in variaveis">
                             <td>{{variavel.descricao}}</td>
-                            <td>{{variavel.objetivo}}</td>
-                            <td><span class="glyphicon glyphicon-pencil" ng-click="editarVariavel(variavel)"></span></td>
-                            <td><span class="glyphicon glyphicon-remove" ng-click="removerVariavel(variaveis, variavel)"></span></td>
+                            <!-- <td>{{variavel.objetivo}}</td> -->
+                            <td>
+								<label>
+                                	<input type="radio" name="objetivo" ng-click="salvarVariavel(variavel)" ng-model="variavel.objetivo" value="Sim"> Sim
+                            	</label>	
+                            </td>
+                            <td class="text-center"><span class="glyphicon glyphicon-pencil" ng-click="editarVariavel(variavel)"></span></td>
+                            <td class="text-center"><span class="glyphicon glyphicon-remove" ng-click="removerVariavel(variaveis, variavel)"></span></td>
                         </tr>
                     </table>
-                </div>
-                <input type="text" class="form-control" ng-model="variavel.descricao" placeholder="Descrição" />
-                <div class="inputs-group col-sm-12">
-                    <div>
-                        <h3 class="panel-title">Objetivo</h3>
+
+                    <div class="panel-body">
+                    	<form name="formVar" style="margin: 0;">
+                			<input type="text" required class="form-control" ng-model="variavel.descricao" placeholder="Nome da Variável" />  
+		                    
+		                    <button class="btn btn-primary btn-block" ng-disabled="formVar.$invalid" ng-click="adicionarVariavel(variavel)" ng-show="!editandoVariavel">Adicionar</button>
+		                	<button class="btn btn-primary btn-block" ng-disabled="formVar.$invalid" ng-click="salvarVariavel(variavel)" ng-show="editandoVariavel">Salvar</button>	                	
+	                   	</form>		
+
+<!-- 						<div class="inputs-group col-sm-12">
+		                    <div>
+		                        <h3 class="panel-title">Universo</h3>
+		                    </div>
+		                    <div>
+		                        <div class="col-sm-6">
+		                            <input type="number" required class="form-control" ng-model="termo.universo.inicio" placeholder="Início"/>
+		                        </div>
+		                        <div class="col-sm-6">
+		                            <input type="number" required class="form-control" ng-model="termo.universo.fim" placeholder="Fim" />
+		                        </div>
+		                    </div>
+	                    </div>   -->	
                     </div>
-                    <div>
-                        <div class="col-sm-12">
-                            <label>
-                                <input type="radio" ng-model="variavel.objetivo" value="Sim"> Sim
-                            </label>
-                            <label>
-                                <input type="radio" ng-model="variavel.objetivo" value="Nao"> Não
-                            </label>
-                        </div>
-                    </div>
                 </div>
-                <button class="btn btn-primary btn-block" ng-click="adicionarVariavel(variavel)" ng-show="!editandoVariavel">Adicionar</button>
-                <button class="btn btn-primary btn-block" ng-click="salvarVariavel(variavel)" ng-show="editandoVariavel">Salvar</button>
             </div>
             <div class="col-sm-8">
                 <div class="panel panel-default">
@@ -58,12 +67,11 @@
                     <table class="table table-striped table-bordered">
                         <tr>
                             <th>Descrição</th>
-                            <th>Inicio Suporte</th>
+                            <th>Início Suporte</th>
                             <th>Fim Suporte</th>
-                            <th>Inicio Nucleo</th>
-                            <th>Fim Nucleo</th>
-                            <th></th>
-                            <th></th>
+                            <th>Início Núcleo</th>
+                            <th>Fim Núcleo</th>
+                            <th colspan="2">Ações</th>
                         </tr>
                         <tr ng-repeat="termo in variavel.termos">
                             <td>{{termo.descricao}}</td>
@@ -71,81 +79,107 @@
                             <td>{{termo.suporte.fim}}</td>
                             <td>{{termo.nucleo.inicio}}</td>
                             <td>{{termo.nucleo.fim}}</td>
-                            <td><span class="glyphicon glyphicon-pencil" ng-click="editarTermo(termo)"></span></td>
-                            <td><span class="glyphicon glyphicon-remove" ng-click="removerTermo(variavel, termo)"></span></td>
+                            <td class="text-center"><span class="glyphicon glyphicon-pencil" ng-click="editarTermo(termo)"></span></td>
+                            <td class="text-center"><span class="glyphicon glyphicon-remove" ng-click="removerTermo(variavel, termo)"></span></td>
                         </tr>
                     </table>
-                </div>
-                <input type="text" class="form-control" ng-model="termo.descricao" placeholder="Descrição" />
-                <div class="inputs-group col-sm-12">
-                    <div>
-                        <h3 class="panel-title">Suporte</h3>
-                    </div>
-                    <div>
-                        <div class="col-sm-6">
-                            <input type="number" class="form-control" ng-model="termo.suporte.inicio" placeholder="Suporte Inicial"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="number" class="form-control" ng-model="termo.suporte.fim" placeholder="Suporte Final"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="inputs-group col-sm-12">
-                    <div>
-                        <h3 class="panel-title">Nucleo</h3>
-                    </div>
-                    <div>
-                        <div class="col-sm-6">
-                            <input type="number" class="form-control" ng-model="termo.nucleo.inicio" placeholder="Nucleo Inicial"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="number" class="form-control" ng-model="termo.nucleo.fim" placeholder="Nucleo Final"/>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-block" ng-click="adicionarTermo(variavel, termo)" ng-show="!editandoTermo">Adicionar</button>
-                <button class="btn btn-primary btn-block" ng-click="salvarTermo()" ng-show="editandoTermo">Salvar</button>
+                    <div class="panel-body">
+                    	<form name="formTermo" style="margin: 0;">
+							<input type="text" required class="form-control" ng-model="termo.descricao" placeholder="Valor" />
+
+			                <div class="inputs-group col-sm-12">
+			                    <div>
+			                        <h3 class="panel-title">Suporte</h3>
+			                    </div>
+			                    <div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.suporte.inicio" placeholder="Suporte Inicial"/>
+			                        </div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.suporte.fim" placeholder="Suporte Final"/>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="inputs-group col-sm-12">
+			                    <div>
+			                        <h3 class="panel-title">Núcleo</h3>
+			                    </div>
+			                    <div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.nucleo.inicio" placeholder="Núcleo Inicial"/>
+			                        </div>
+			                        <div class="col-sm-6">
+			                            <input type="number" class="form-control" ng-model="termo.nucleo.fim" placeholder="Núcleo Final"/>
+			                        </div>
+			                    </div>
+			                </div>
+			                <button class="btn btn-primary btn-block" ng-disabled="formTermo.$invalid" ng-click="adicionarTermo(variavel, termo)" ng-show="variavel.descricao.length > 0 && !editandoTermo">Adicionar</button>
+	                		<button class="btn btn-primary btn-block" ng-disabled="formTermo.$invalid" ng-click="salvarTermo()" ng-show="editandoTermo">Salvar</button>                    	
+                		</form>
+                    </div>                    
+                </div>                
             </div>
         </div>
+
         <div class="row">
-            <div class="col-sm-12" ng-show="variavelObjetivo.termos.length > 0" style="margin-top: 15px;">
+            <div class="col-sm-12" ng-show="variavelObjetivo.termos.length > 0" style="margin-top: 15px;padding: 0">
                 <div class=" col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">Regras dos termos objetivos de {{variavelObjetivo.descricao}}</div>
                         <table class="table table-striped table-bordered">
                             <tr ng-repeat="termoObjetivo in variavelObjetivo.termos">
-                                <td>{{termoObjetivo.descricao}}</td>
-                                <td><span class="glyphicon glyphicon-pencil" ng-click="editarCondicoes(termoObjetivo)"></span></td>
+                                <td colspan="2">{{termoObjetivo.descricao}}</td>
+                                <td class="text-center"><span class="glyphicon glyphicon-pencil" ng-click="editarCondicoes(termoObjetivo)"></span></td>
+                                <td class="text-center"><span class="glyphicon glyphicon-eye-open" ng-click="visualizarCondicoes(termoObjetivo)"></span></td>
                             </tr>
                         </table>
                     </div>
                 </div>
+
                 <div class="col-sm-8">
-                    <div ng-repeat="condicao in termoObjetivo.condicoes">
-                        <div class=" col-sm-6">
-                            <select class="form-control" ng-model="condicao.variavel" ng-options="variavel.descricao for variavel in variaveis  | filter:{objetivo: 'Nao'}">
-                                 <option value="">Selecione uma variavel</option>
-                            </select>
-                        </div>
-                        <div class=" col-sm-6">
-                            <select class="form-control" ng-model="condicao.termo" ng-options="termo.descricao for termo in condicao.variavel.termos">
-                                 <option value="">Selecione um Termo</option>
-                            </select>
-                        </div>
+    	            <div class="panel panel-default">
+    	            	<div class="panel-heading">Regras para o termo {{termoObjetivo.descricao}}</div>
+    	            	<div class="panel-body">
+    	            		<form name="formCondicao">
+			                    <div ng-repeat="condicao in termoObjetivo.condicoes">
+			                        <div class="col-sm-5">
+			                            <select required class="form-control" ng-model="condicao.variavel" ng-options="variavel.descricao for variavel in variaveis  | filter:{objetivo: '!Sim'}">
+			                                 <option value="">Selecione uma variavel</option>
+			                            </select>
+			                        </div>
+			                        <div class="col-sm-2"><p style="line-height: 44px;" class="text-center">=</p></div>
+			                        <div class="col-sm-5">
+			                            <select required class="form-control" ng-model="condicao.termo" ng-options="termo.descricao for termo in condicao.variavel.termos">
+			                                 <option value="">Selecione um Termo</option>
+			                            </select>
+			                        </div>
+			                        <div class="clearfix"></div>
+			                    </div>
+	                    		<button class="btn btn-primary btn-block" ng-disabled="formCondicao.$invalid" ng-show="termoObjetivo.condicoes.length > 0" ng-click="adicionarCondicao()">Adicionar Condição</button>
+                    		</form>
+	                    </div>
                     </div>
-                    <button class="btn btn-primary btn-block" ng-show="termoObjetivo.condicoes.length > 0" ng-click="adicionarCondicao()">Adicionar Condicao</button>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-2" ng-repeat="variavel in variaveis | filter:{objetivo: 'Nao'}">
-                <input type="text" class="form-control" placeholder="{{variavel.descricao}}"/>
+        <div class="row" ng-show="variavel.termos.length > 0 && variavelObjetivo.termos.length > 0">
+        	<div class="col-sm-4"></div>
+        	<div class="col-sm-4">
+        		<div class="panel panel-default">
+        			<div class="panel-heading">Entrada dos dados (crisp) </div>
+        			<div class="panel-body">	
+        				<form name="formEntrada">
+				            <div class="col-sm-6" ng-repeat="variavel in variaveis | filter:{objetivo: '!Sim'}">
+				                <input required ng-required="true" type="text" class="form-control" placeholder="{{variavel.descricao}}"/>
+				            </div>
+				            <div class="col-sm-12">
+				                <button class="btn btn-primary btn-block" ng-disabled="formEntrada.$invalid" ng-click="processar(variaveis)">Processar</button>
+				            </div>
+				        </form>       	
+		            </div>
+		        </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <button class="btn btn-primary btn-block" ng-click="processar(variaveis)">Processar</button>
-            </div>
+            <div class="col-sm-4"></div>
         </div>
     </div>
 </body>
