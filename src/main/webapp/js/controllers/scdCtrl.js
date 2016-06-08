@@ -56,10 +56,10 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
     var defineVariavelObjetivo = function (variavel) {
         if (variavel.objetivo === 'Sim') {
             if ($scope.variavelObjetivo != undefined && $scope.variavelObjetivo != variavel) {
-                $scope.variavelObjetivo.objetivo = 'Nao';
+                $scope.variavelObjetivo.objetivo = undefined;
             }
             $scope.variavelObjetivo = variavel;
-        } else if (variavel.objetivo === 'Nao' && $scope.variavelObjetivo === variavel) {
+        } else if (variavel.objetivo === undefined && $scope.variavelObjetivo === variavel) {
             $scope.variavelObjetivo = [];
         }
     };
@@ -70,6 +70,10 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
             termoObjetivo.condicoes.push({});
         }
         $scope.termoObjetivo = termoObjetivo;
+    }
+
+    $scope.visualizarCondicoes = function(termoObjetivo) {
+        console.log(termoObjetivo.condicoes);
     }
     
     $scope.adicionarCondicao = function() {

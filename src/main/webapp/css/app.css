@@ -2,6 +2,10 @@
     margin-top: 15px;
 }
 
+.glyphicon {
+    cursor: pointer;
+}
+
 .glyphicon-remove {
     color: firebrick;
 }
