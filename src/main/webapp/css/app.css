@@ -33,3 +33,15 @@
     margin-bottom: 5px;
     margin-top: 5px;
 }
+
+.indent {
+    color: #3B3B9D;
+    text-indent: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.black {
+    color: #000 !important;
+    font-weight: normal;
+}
