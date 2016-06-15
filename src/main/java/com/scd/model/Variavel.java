@@ -34,4 +34,8 @@ public class Variavel {
 		this.termos = termos;
 	}
 	
+	public boolean isObjetivo() {
+		return objetivo != null;
+	}
+	
 }
