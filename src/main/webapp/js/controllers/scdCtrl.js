@@ -73,8 +73,6 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
     }
 
     $scope.visualizarCondicoes = function(variavelObjetivo) {
-        // console.log(variavelObjetivo);
-
         $scope.regras = [];
         for (var i = 0; i < variavelObjetivo.termos.length; i++) {            
             var valorConsequente = variavelObjetivo.termos[i].descricao,

@@ -47,19 +47,7 @@
 		                	<button class="btn btn-primary btn-block" ng-disabled="formVar.$invalid" ng-click="salvarVariavel(variavel)" ng-show="editandoVariavel">Salvar</button>	                	
 	                   	</form>		
 
-<!-- 						<div class="inputs-group col-sm-12">
-		                    <div>
-		                        <h3 class="panel-title">Universo</h3>
-		                    </div>
-		                    <div>
-		                        <div class="col-sm-6">
-		                            <input type="number" required class="form-control" ng-model="termo.universo.inicio" placeholder="Início"/>
-		                        </div>
-		                        <div class="col-sm-6">
-		                            <input type="number" required class="form-control" ng-model="termo.universo.fim" placeholder="Fim" />
-		                        </div>
-		                    </div>
-	                    </div>   -->	
+
                     </div>
                 </div>
             </div>
@@ -88,7 +76,20 @@
                     <div class="panel-body">
                     	<form name="formTermo" style="margin: 0;">
 							<input type="text" required class="form-control" ng-model="termo.descricao" placeholder="Valor" />
-
+							<div class="inputs-group col-sm-12">
+			                    <div>
+			                        <h3 class="panel-title">Universo</h3>
+			                    </div>
+			                    <div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.universo.inicio" placeholder="Início"/>
+			                        </div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.universo.fim" placeholder="Fim" />
+			                        </div>
+			                    </div>
+		                    </div>  	
+	                    
 			                <div class="inputs-group col-sm-12">
 			                    <div>
 			                        <h3 class="panel-title">Suporte</h3>
