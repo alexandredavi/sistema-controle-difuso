@@ -40,14 +40,14 @@ public class FuncaoDePertinencia {
 		}
 	}
 
-	public void fuzzifica(Variavel variavel, double valor) {
+	public static void fuzzifica(Variavel variavel, double valor) {
 		for (Termo termo : variavel.getTermos()) {
 			double valorFuzzificado = aplicaFincaoDePertinencia(termo, valor);
 			termo.setValorFuzzificado(valorFuzzificado);
 		}
 	}
 
-	private double aplicaFincaoDePertinencia(Termo termo, double valor) {
+	private static double aplicaFincaoDePertinencia(Termo termo, double valor) {
 		Integer inicioNucleo = termo.getNucleo().getInicio();
 		Integer inicioSuporte = termo.getSuporte().getInicio();
 		Integer fimNucleo = termo.getNucleo().getFim();
