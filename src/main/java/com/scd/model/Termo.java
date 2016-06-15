@@ -6,11 +6,13 @@ public class Termo {
 	
 	private String descricao;
 	
-	private Suporte suporte;
-	private Nucleo nucleo;
+	private Suporte suporte = new Suporte();
+	private Nucleo nucleo = new Nucleo();
 	
 	// só tem se for referente a variavel objetivo
 	private List<Condicao> condicoes;
+
+	private double valorFuzzificado;
 	
 	public List<Condicao> getCondicoes() {
 		return condicoes;
@@ -35,5 +37,11 @@ public class Termo {
 	}
 	public void setNucleo(Nucleo nucleo) {
 		this.nucleo = nucleo;
+	}
+	public void setValorFuzzificado(double valorFuzzificado) {
+		this.valorFuzzificado = valorFuzzificado;
+	}
+	public double getValorFuzzificado() {
+		return valorFuzzificado;
 	}
 }

@@ -1,5 +1,6 @@
 package com.scd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Variavel {
@@ -7,7 +8,7 @@ public class Variavel {
 	private String descricao;
 	private String objetivo;
 	
-	private List<Termo> termos;
+	private List<Termo> termos = new ArrayList<>();
 
 	public String getDescricao() {
 		return descricao;
