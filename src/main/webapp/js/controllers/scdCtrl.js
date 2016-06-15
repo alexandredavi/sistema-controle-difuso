@@ -72,8 +72,41 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
         $scope.termoObjetivo = termoObjetivo;
     }
 
-    $scope.visualizarCondicoes = function(termoObjetivo) {
-        console.log(termoObjetivo.condicoes);
+    $scope.visualizarCondicoes = function(variavelObjetivo) {
+        $scope.regras = [];
+        for (var i = 0; i < variavelObjetivo.termos.length; i++) {            
+            var valorConsequente = variavelObjetivo.termos[i].descricao,
+                condicoes        = variavelObjetivo.termos[i].condicoes,
+                regra            = {},                            
+                linha            = {};
+
+                regra.linhas     = [];
+                regra.descricao  = "Regra " + (i + 1);
+
+            for(var j = 0; j < condicoes.length; j++) {
+                var variavel = condicoes[j].variavel.descricao,
+                    termo    = condicoes[j].termo.descricao;                
+
+                if(j > 0 && j < condicoes.length) {
+                    linha.condicao = "E ";
+                } else {
+                    linha.condicao = "SE ";
+                }
+
+                linha.valor = variavel + " = " + termo;
+
+                regra.linhas.push(angular.copy(linha));
+                delete linha;
+            }
+
+            linha.condicao = "ENTÃO ";
+            linha.valor =  variavelObjetivo.descricao + " = " + valorConsequente;
+            regra.linhas.push(angular.copy(linha));
+            delete linha;
+
+            $scope.regras.push(angular.copy(regra));
+            delete regra;
+        }        
     }
     
     $scope.adicionarCondicao = function() {
