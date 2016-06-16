@@ -10,12 +10,10 @@ import com.scd.model.Variavel;
 
 public class FuncaoDePertinenciaTest {
 	
-	private FuncaoDePertinencia funcaoDePertinencia;
 	private Variavel idade;
 	
 	@Before
 	public void iniciaTeste() {
-		funcaoDePertinencia = new FuncaoDePertinencia();
 		idade = new Variavel();
 	}
 	
@@ -30,7 +28,7 @@ public class FuncaoDePertinenciaTest {
 		jovem.getNucleo().setFim(20);
 		idade.getTermos().add(jovem);
 		
-		funcaoDePertinencia.fuzzifica(idade, 22);
+		FuncaoDePertinencia.fuzzifica(idade, 22);
 		double valorFuzzificado = idade.getTermos().get(0).getValorFuzzificado();
 		Assert.assertEquals(0.8D, valorFuzzificado, 0.001);
 	}
@@ -46,7 +44,7 @@ public class FuncaoDePertinenciaTest {
 		adulto.getNucleo().setFim(50);
 		idade.getTermos().add(adulto);
 		
-		funcaoDePertinencia.fuzzifica(idade, 22);
+		FuncaoDePertinencia.fuzzifica(idade, 22);
 		double valorFuzzificado = idade.getTermos().get(0).getValorFuzzificado();
 		Assert.assertEquals(0.2D, valorFuzzificado, 0.001);
 	}
@@ -62,7 +60,7 @@ public class FuncaoDePertinenciaTest {
 		idoso.getNucleo().setFim(90);
 		idade.getTermos().add(idoso);
 		
-		funcaoDePertinencia.fuzzifica(idade, 22);
+		FuncaoDePertinencia.fuzzifica(idade, 22);
 		double valorFuzzificado = idade.getTermos().get(0).getValorFuzzificado();
 		Assert.assertEquals(0.0D, valorFuzzificado, 0.001);
 	}

@@ -9,7 +9,7 @@ public class Variavel {
 	private String objetivo;
 	
 	private List<Termo> termos = new ArrayList<>();
-
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -37,5 +37,5 @@ public class Variavel {
 	public boolean isObjetivo() {
 		return objetivo != null;
 	}
-	
+
 }

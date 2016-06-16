@@ -1,5 +1,6 @@
 package com.scd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Termo {
@@ -10,9 +11,10 @@ public class Termo {
 	private Nucleo nucleo = new Nucleo();
 	
 	// só tem se for referente a variavel objetivo
-	private List<Condicao> condicoes;
+	private List<Condicao> condicoes = new ArrayList<>();
 
 	private double valorFuzzificado;
+	private double valorAtivacao;
 	
 	public List<Condicao> getCondicoes() {
 		return condicoes;
@@ -49,5 +51,11 @@ public class Termo {
 	}
 	public double getValorFuzzificado() {
 		return valorFuzzificado;
+	}
+	public double getValorAtivação() {
+		return valorAtivacao;
+	}
+	public void setValorAtivação(double valorAtivação) {
+		this.valorAtivacao = valorAtivação;
 	}
 }
