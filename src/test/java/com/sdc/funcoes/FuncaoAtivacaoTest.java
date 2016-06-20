@@ -70,8 +70,8 @@ public class FuncaoAtivacaoTest {
 		
 		FuncaoDeAtivacao.calculaValorDeAtivacao(potencia, Arrays.asList(idade, frequencia));
 		
-		Assert.assertEquals(0.2, maxima.getValorAtivação(), 0.0001);
-		Assert.assertEquals(0.75, medio.getValorAtivação(), 0.0001);
+		Assert.assertEquals(0.2, maxima.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.75, medio.getValorAtivacao(), 0.0001);
 		
 	}
 	

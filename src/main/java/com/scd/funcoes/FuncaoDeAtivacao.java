@@ -21,7 +21,7 @@ public class FuncaoDeAtivacao {
 				double valorFuzzificado = termoCondicao.getValorFuzzificado();
 				menorValor = Double.min(menorValor, valorFuzzificado);
 			}
-			termo.setValorAtivação(menorValor);
+			termo.setValorAtivacao(menorValor);
 		}
 	}
 	

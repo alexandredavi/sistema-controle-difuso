@@ -6,7 +6,6 @@ import java.util.List;
 public class Termo {
 	
 	private String descricao;
-	private Universo universo = new Universo();
 	private Suporte suporte = new Suporte();
 	private Nucleo nucleo = new Nucleo();
 	
@@ -15,6 +14,7 @@ public class Termo {
 
 	private double valorFuzzificado;
 	private double valorAtivacao;
+	private int quantidadeDeValoresDoUniverso;
 	
 	public List<Condicao> getCondicoes() {
 		return condicoes;
@@ -27,12 +27,6 @@ public class Termo {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public Universo getUniverso() {
-		return universo;
-	}
-	public void setUniverso(Universo universo) {
-		this.universo = universo;
 	}
 	public Suporte getSuporte() {
 		return suporte;
@@ -52,10 +46,16 @@ public class Termo {
 	public double getValorFuzzificado() {
 		return valorFuzzificado;
 	}
-	public double getValorAtivação() {
+	public double getValorAtivacao() {
 		return valorAtivacao;
 	}
-	public void setValorAtivação(double valorAtivação) {
+	public void setValorAtivacao(double valorAtivação) {
 		this.valorAtivacao = valorAtivação;
+	}
+	public int getQuantidadeDeValoresDoUniverso() {
+		return quantidadeDeValoresDoUniverso;
+	}
+	public void setQuantidadeDeValoresDoUniverso(int quantidadeDeValoresDoUniverso) {
+		this.quantidadeDeValoresDoUniverso = quantidadeDeValoresDoUniverso;
 	}
 }
