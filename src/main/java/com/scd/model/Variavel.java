@@ -7,10 +7,15 @@ public class Variavel {
 	
 	private String descricao;
 	private String objetivo;
+<<<<<<< HEAD
 	private double valorCrisp;
+=======
+	private Universo universo = new Universo();
+	private double valorDeffuzificado;
+>>>>>>> 38c56677ffe54d4a900bae7db7df47e03cc307c3
 	
 	private List<Termo> termos = new ArrayList<>();
-
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -46,5 +51,21 @@ public class Variavel {
 	public boolean isObjetivo() {
 		return objetivo != null;
 	}
-	
+
+	public Universo getUniverso() {
+		return universo;
+	}
+
+	public void setUniverso(Universo universo) {
+		this.universo = universo;
+	}
+
+	public double getValorDeffuzificado() {
+		return valorDeffuzificado;
+	}
+
+	public void setValorDeffuzificado(double valorDeffuzificado) {
+		this.valorDeffuzificado = valorDeffuzificado;
+	}
+
 }

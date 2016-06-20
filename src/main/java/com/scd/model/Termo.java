@@ -1,18 +1,20 @@
 package com.scd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Termo {
 	
 	private String descricao;
-	private Universo universo = new Universo();
 	private Suporte suporte = new Suporte();
 	private Nucleo nucleo = new Nucleo();
 	
 	// só tem se for referente a variavel objetivo
-	private List<Condicao> condicoes;
+	private List<Condicao> condicoes = new ArrayList<>();
 
 	private double valorFuzzificado;
+	private double valorAtivacao;
+	private int quantidadeDeValoresDoUniverso;
 	
 	public List<Condicao> getCondicoes() {
 		return condicoes;
@@ -25,12 +27,6 @@ public class Termo {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public Universo getUniverso() {
-		return universo;
-	}
-	public void setUniverso(Universo universo) {
-		this.universo = universo;
 	}
 	public Suporte getSuporte() {
 		return suporte;
@@ -49,5 +45,17 @@ public class Termo {
 	}
 	public double getValorFuzzificado() {
 		return valorFuzzificado;
+	}
+	public double getValorAtivacao() {
+		return valorAtivacao;
+	}
+	public void setValorAtivacao(double valorAtivação) {
+		this.valorAtivacao = valorAtivação;
+	}
+	public int getQuantidadeDeValoresDoUniverso() {
+		return quantidadeDeValoresDoUniverso;
+	}
+	public void setQuantidadeDeValoresDoUniverso(int quantidadeDeValoresDoUniverso) {
+		this.quantidadeDeValoresDoUniverso = quantidadeDeValoresDoUniverso;
 	}
 }
