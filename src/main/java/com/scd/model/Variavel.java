@@ -7,6 +7,7 @@ public class Variavel {
 	
 	private String descricao;
 	private String objetivo;
+	private double valorCrisp;
 	
 	private List<Termo> termos = new ArrayList<>();
 
@@ -34,6 +35,14 @@ public class Variavel {
 		this.termos = termos;
 	}
 	
+	public double getValorCrisp() {
+		return valorCrisp;
+	}
+
+	public void setValorCrisp(double valorCrisp) {
+		this.valorCrisp = valorCrisp;
+	}
+
 	public boolean isObjetivo() {
 		return objetivo != null;
 	}

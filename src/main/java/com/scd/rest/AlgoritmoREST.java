@@ -20,7 +20,6 @@ public class AlgoritmoREST {
 		Algoritmo algoritmo = new Algoritmo(variaveis);
 		algoritmo.processar();
 		
-		variaveis.stream().forEach(i -> System.out.println(i.getDescricao()));
 		return Response.ok().build();
 	}
 }

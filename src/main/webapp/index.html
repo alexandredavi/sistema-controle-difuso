@@ -42,6 +42,19 @@
                     <div class="panel-body">
                     	<form name="formVar" style="margin: 0;">
                 			<input type="text" required class="form-control" ng-model="variavel.descricao" placeholder="Nome da Variável" />  
+							<div class="inputs-group col-sm-12">
+			                    <div>
+			                        <h3 class="panel-title">Universo</h3>
+			                    </div>
+			                    <div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.universo.inicio" placeholder="Início"/>
+			                        </div>
+			                        <div class="col-sm-6">
+			                            <input type="number" required class="form-control" ng-model="termo.universo.fim" placeholder="Fim" />
+			                        </div>
+			                    </div>
+		                    </div>  	
 		                    
 		                    <button class="btn btn-primary btn-block" ng-disabled="formVar.$invalid" ng-click="adicionarVariavel(variavel)" ng-show="!editandoVariavel">Adicionar</button>
 		                	<button class="btn btn-primary btn-block" ng-disabled="formVar.$invalid" ng-click="salvarVariavel(variavel)" ng-show="editandoVariavel">Salvar</button>	                	
@@ -76,20 +89,7 @@
                     <div class="panel-body">
                     	<form name="formTermo" style="margin: 0;">
 							<input type="text" required class="form-control" ng-model="termo.descricao" placeholder="Valor" />
-							<div class="inputs-group col-sm-12">
-			                    <div>
-			                        <h3 class="panel-title">Universo</h3>
-			                    </div>
-			                    <div>
-			                        <div class="col-sm-6">
-			                            <input type="number" required class="form-control" ng-model="termo.universo.inicio" placeholder="Início"/>
-			                        </div>
-			                        <div class="col-sm-6">
-			                            <input type="number" required class="form-control" ng-model="termo.universo.fim" placeholder="Fim" />
-			                        </div>
-			                    </div>
-		                    </div>  	
-	                    
+
 			                <div class="inputs-group col-sm-12">
 			                    <div>
 			                        <h3 class="panel-title">Suporte</h3>
@@ -175,7 +175,7 @@
         			<div class="panel-body">	
         				<form name="formEntrada">
 				            <div class="col-sm-6" ng-repeat="variavel in variaveis | filter:{objetivo: '!Sim'}">
-				                <input required ng-required="true" type="text" class="form-control" placeholder="{{variavel.descricao}}"/>
+				                <input required ng-model="variavel.valorCrisp" ng-required="true" type="text" class="form-control" placeholder="{{variavel.descricao}}"/>
 				            </div>
 				            <div class="col-sm-12">
 				                <button class="btn btn-primary btn-block" ng-disabled="formEntrada.$invalid" ng-click="processar(variaveis)">Processar</button>

@@ -4,6 +4,7 @@ public class Condicao {
 
 	private Variavel variavel;
 	private Termo termo;
+	
 	public Variavel getVariavel() {
 		return variavel;
 	}

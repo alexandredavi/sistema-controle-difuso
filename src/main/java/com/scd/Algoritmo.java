@@ -11,7 +11,9 @@ public class Algoritmo {
 
 	public void processar() {
 		for (Variavel variavel : variaveis) {
-			FuncaoDePertinencia.fuzzifica(variavel, 85);
+			if(!variavel.isObjetivo()) {
+				FuncaoDePertinencia.fuzzifica(variavel, variavel.getValorCrisp());
+			}
 		}
 	}
 	
