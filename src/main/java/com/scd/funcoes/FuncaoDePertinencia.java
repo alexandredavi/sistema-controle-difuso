@@ -11,6 +11,7 @@ public class FuncaoDePertinencia {
 			System.out.println(termo.getDescricao() + " - " + valorFuzzificado);
 			termo.setValorFuzzificado(valorFuzzificado);
 		}
+		System.out.println();
 	}
 
 	private static double aplicaFincaoDePertinencia(Termo termo, double valor) {

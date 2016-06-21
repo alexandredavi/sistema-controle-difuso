@@ -7,12 +7,9 @@ public class Variavel {
 	
 	private String descricao;
 	private String objetivo;
-<<<<<<< HEAD
 	private double valorCrisp;
-=======
 	private Universo universo = new Universo();
 	private double valorDeffuzificado;
->>>>>>> 38c56677ffe54d4a900bae7db7df47e03cc307c3
 	
 	private List<Termo> termos = new ArrayList<>();
 	
