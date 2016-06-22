@@ -5,6 +5,9 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.scd.Algoritmo;
 import com.scd.model.Variavel;
@@ -13,12 +16,13 @@ import com.scd.model.Variavel;
 public class AlgoritmoREST {
 
 	@POST
-	@Consumes("text/plain")
-	public List<Variavel> doPost(List<Variavel> variaveis) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response doPost(List<Variavel> variaveis) {
 		
 		Algoritmo algoritmo = new Algoritmo(variaveis);
-		return algoritmo.processar();
+		List<Variavel> variaveisReorno = algoritmo.processar();
 		
-//		return Response.ok().build();
+		return Response.ok().entity(variaveisReorno).build();
 	}
 }
