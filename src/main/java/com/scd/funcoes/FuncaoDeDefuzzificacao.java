@@ -13,6 +13,8 @@ public class FuncaoDeDefuzzificacao {
 		double divisor = encontraDivisor(variavel);
 		double valorDeffuzificado = dividendo / divisor;
 		variavel.setValorDeffuzificado(valorDeffuzificado);
+		
+		System.out.println(valorDeffuzificado);
 	}
 
 	private static double encontraDivisor(Variavel variavel) {

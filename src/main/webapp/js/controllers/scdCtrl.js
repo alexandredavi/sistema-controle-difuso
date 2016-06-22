@@ -158,14 +158,14 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
                             linha.condicao = "SE ";
                         }
 
-                        linha.valor = v + " = " + termo + " (" + valorFuzzy[0].valorFuzzificado + ")";
+                        linha.valor = v + " = " + termo + " (" + valorFuzzy[0].valorFuzzificado.toPrecision(2) + ")";
 
                         regra.linhas.push(angular.copy(linha));
                         delete linha;
                     }    
 
                     linha.condicao = "ENTÃO ";
-                    linha.valor =  variavelObjetivo.descricao + " = " + valorConsequente + " (" + variaveisAtivacao[j].valorAtivacao + ")";
+                    linha.valor =  variavelObjetivo.descricao + " = " + valorConsequente + " (" + variaveisAtivacao[j].valorAtivacao.toPrecision(2) + ")";
                     regra.linhas.push(angular.copy(linha));
                     delete linha;
 
@@ -187,7 +187,7 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
         });
     }
 
-    $http.get("teste.json").success(function(data) {
+    $http.get("lojaOnline.json").success(function(data) {
         $scope.conteudo = data;
 
         for (var i = 0; i < data.length; i++) {            

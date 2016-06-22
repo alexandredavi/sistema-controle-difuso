@@ -20,6 +20,7 @@ public class Algoritmo {
 		}
 		
 		Variavel objetivo = AlgoritmoUtils.getVariavelObjetivo(variaveis);
+		
 		FuncaoDeAtivacao.calculaValorDeAtivacao(objetivo, variaveis);
 		FuncaoDeDefuzzificacao.deffuzifica(objetivo);
 		
