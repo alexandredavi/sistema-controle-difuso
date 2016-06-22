@@ -8,10 +8,8 @@ public class FuncaoDePertinencia {
 	public static void fuzzifica(Variavel variavel, double valor) {
 		for (Termo termo : variavel.getTermos()) {
 			double valorFuzzificado = aplicaFincaoDePertinencia(termo, valor);
-			System.out.println(termo.getDescricao() + " - " + valorFuzzificado);
 			termo.setValorFuzzificado(valorFuzzificado);
 		}
-		System.out.println();
 	}
 
 	private static double aplicaFincaoDePertinencia(Termo termo, double valor) {

@@ -3,6 +3,7 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
     $scope.variaveis = [];
     $scope.variavelObjetivo;
     $scope.resultado = [];
+    $scope.conteudo = null;
 
     $scope.adicionarVariavel = function (variavel) {
         defineVariavelObjetivo(variavel);
@@ -180,14 +181,17 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
     }
 
     $scope.processar = function(variaveis) {
-        // $http.get("/sistema-controle-difuso/rest/algoritmoREST", variaveis).success(function(data) {
-        //     $scope.resultado = json;         
-        //     $scope.visualizarCondicoesFuzzificadas($scope.resultado);
-        // });
-
-        $http.get("teste.json").success(function(json) {
-                $scope.resultado = json;         
-                $scope.visualizarCondicoesFuzzificadas($scope.resultado);
+        $http.post("/rest/algoritmoREST", variaveis).success(function(data) {
+            $scope.resultado = data;         
+            $scope.visualizarCondicoesFuzzificadas($scope.resultado);
         });
     }
+
+    $http.get("teste.json").success(function(data) {
+        $scope.conteudo = data;
+
+        for (var i = 0; i < data.length; i++) {            
+            $scope.adicionarVariavel($scope.conteudo[i]);
+        }
+    });          
 });
