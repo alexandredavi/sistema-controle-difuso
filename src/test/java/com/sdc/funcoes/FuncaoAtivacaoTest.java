@@ -69,16 +69,16 @@ public class FuncaoAtivacaoTest {
 		condicaoFCAlta.setVariavel(frequencia);
 		condicaoFCAlta.setTermo(frequencia.getTermos().get(2));
 		
-		minima.setCondicoes(Arrays.asList(condicaoFCAlta));
-		medio.setCondicoes(Arrays.asList(condicaoIdadeAdulta, condicaoFCModerada));
-		maxima.setCondicoes(Arrays.asList(condicaoIdadeJovem, condicaoFCAlta));
+		maxima.setCondicoes(Arrays.asList(condicaoIdadeAdulta, condicaoFCModerada));
+		medio.setCondicoes(Arrays.asList(condicaoIdadeJovem, condicaoFCAlta));
+		//maxima.setCondicoes(Arrays.asList(condicaoIdadeJovem, condicaoFCAlta));
 		
 		potencia.getTermos().add(minima);
 		potencia.getTermos().add(medio);
 		potencia.getTermos().add(maxima);
 		
-		FuncaoDePertinencia.fuzzifica(idade, 52);
-		FuncaoDePertinencia.fuzzifica(frequencia, 170);
+		FuncaoDePertinencia.fuzzifica(idade, 22);
+		FuncaoDePertinencia.fuzzifica(frequencia, 135);
 		
 		FuncaoDeAtivacao.calculaValorDeAtivacao(potencia, Arrays.asList(idade, frequencia));
 		
@@ -156,5 +156,162 @@ public class FuncaoAtivacaoTest {
 		frequencia.getTermos().add(alta);
 		
 		return frequencia;
+	}
+	
+	@Test
+	public void test2() {
+		Variavel temperatura = variavelTemperatura();
+		Variavel umidade = variavelUmidade();
+		Variavel irrigacao = new Variavel();
+
+		irrigacao.setDescricao("Irrigação");
+
+		Universo universo = new Universo();
+		universo.setInicio(0);
+		universo.setFim(90);
+
+		irrigacao.setUniverso(universo);
+
+		Termo pequeno = new Termo();
+		pequeno.setDescricao("Pequeno");
+		pequeno.getSuporte().setInicio(0);
+		pequeno.getSuporte().setFim(60);
+		pequeno.getNucleo().setInicio(0);
+		pequeno.getNucleo().setFim(30);
+
+		Termo medio = new Termo();
+		medio.setDescricao("Medio");
+		medio.getSuporte().setInicio(30);
+		medio.getSuporte().setFim(90);
+		medio.getNucleo().setInicio(60);
+		medio.getNucleo().setFim(60);
+
+		Termo grande = new Termo();
+		grande.setDescricao("Grande");
+		grande.getSuporte().setInicio(60);
+		grande.getSuporte().setFim(90);
+		grande.getNucleo().setInicio(90);
+		grande.getNucleo().setFim(90);
+
+		Condicao condicaoTemperaturaFria = new Condicao();
+		condicaoTemperaturaFria.setVariavel(temperatura);
+		condicaoTemperaturaFria.setTermo(temperatura.getTermos().get(0));
+
+		Condicao condicaoTemperaturaMedia = new Condicao();
+		condicaoTemperaturaMedia.setVariavel(temperatura);
+		condicaoTemperaturaMedia.setTermo(temperatura.getTermos().get(1));
+
+		Condicao condicaoTemperaturaQuente = new Condicao();
+		condicaoTemperaturaQuente.setVariavel(temperatura);
+		condicaoTemperaturaQuente.setTermo(temperatura.getTermos().get(2));
+
+		Condicao condicaoUmidadeBaixa = new Condicao();
+		condicaoUmidadeBaixa.setVariavel(umidade);
+		condicaoUmidadeBaixa.setTermo(umidade.getTermos().get(0));
+
+		Condicao condicaoUmidadeMedia = new Condicao();
+		condicaoUmidadeMedia.setVariavel(umidade);
+		condicaoUmidadeMedia.setTermo(umidade.getTermos().get(1));
+		
+		Condicao condicaoUmidadeAlta = new Condicao();
+		condicaoUmidadeAlta.setVariavel(umidade);
+		condicaoUmidadeAlta.setTermo(umidade.getTermos().get(2));
+
+		pequeno.setCondicoes(Arrays.asList(condicaoTemperaturaFria, condicaoUmidadeAlta));
+		medio.setCondicoes(Arrays.asList(condicaoTemperaturaMedia, condicaoUmidadeMedia));
+		grande.setCondicoes(Arrays.asList(condicaoTemperaturaQuente, condicaoUmidadeBaixa));
+
+		irrigacao.getTermos().add(pequeno);
+		irrigacao.getTermos().add(medio);
+		irrigacao.getTermos().add(grande);
+
+		FuncaoDePertinencia.fuzzifica(temperatura, 16);
+		FuncaoDePertinencia.fuzzifica(umidade, 58.5);
+
+		FuncaoDeAtivacao.calculaValorDeAtivacao(irrigacao, Arrays.asList(temperatura, umidade));
+
+		Assert.assertEquals(0.34, pequeno.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.6, medio.getValorAtivacao(), 0.0001);
+
+		FuncaoDeDefuzzificacao.deffuzifica(irrigacao);
+		
+		System.out.println(irrigacao.getValorDeffuzificado());
+
+	}
+
+	private Variavel variavelTemperatura() {
+		Variavel temperatura = new Variavel();
+		temperatura.setDescricao("Temperatura");
+
+		Universo universo = new Universo();
+		universo.setInicio(0);
+		universo.setFim(30);
+
+		temperatura.setUniverso(universo);
+
+		Termo fria = new Termo();
+		fria.setDescricao("Fria");
+		fria.getSuporte().setInicio(0);
+		fria.getSuporte().setFim(20);
+		fria.getNucleo().setInicio(0);
+		fria.getNucleo().setFim(10);
+
+		Termo media = new Termo();
+		media.setDescricao("media");
+		media.getSuporte().setInicio(10);
+		media.getSuporte().setFim(30);
+		media.getNucleo().setInicio(20);
+		media.getNucleo().setFim(20);
+
+		Termo quente = new Termo();
+		quente.setDescricao("Quente");
+		quente.getSuporte().setInicio(20);
+		quente.getSuporte().setFim(30);
+		quente.getNucleo().setInicio(30);
+		quente.getNucleo().setFim(30);
+
+		temperatura.getTermos().add(fria);
+		temperatura.getTermos().add(media);
+		temperatura.getTermos().add(quente);
+
+		return temperatura;
+	}
+
+	private Variavel variavelUmidade() {
+		Variavel umidade = new Variavel();
+		umidade.setDescricao("Umidade");
+
+		Universo universo = new Universo();
+		universo.setInicio(0);
+		universo.setFim(100);
+
+		umidade.setUniverso(universo);
+
+		Termo baixa = new Termo();
+		baixa.setDescricao("Baixa");
+		baixa.getSuporte().setInicio(0);
+		baixa.getSuporte().setFim(50);
+		baixa.getNucleo().setInicio(0);
+		baixa.getNucleo().setFim(25);
+
+		Termo media = new Termo();
+		media.setDescricao("Media");
+		media.getSuporte().setInicio(25);
+		media.getSuporte().setFim(75);
+		media.getNucleo().setInicio(50);
+		media.getNucleo().setFim(50);
+
+		Termo alta = new Termo();
+		alta.setDescricao("Alta");
+		alta.getSuporte().setInicio(50);
+		alta.getSuporte().setFim(75);
+		alta.getNucleo().setInicio(75);
+		alta.getNucleo().setFim(75);
+
+		umidade.getTermos().add(baixa);
+		umidade.getTermos().add(media);
+		umidade.getTermos().add(alta);
+
+		return umidade;
 	}
 }
