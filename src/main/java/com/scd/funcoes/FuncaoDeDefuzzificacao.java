@@ -59,7 +59,7 @@ public class FuncaoDeDefuzzificacao {
 		return dividendo;
 	}
 
-	private static Termo 	(int valor, List<Termo> termos) {
+	private static Termo encontraTermoAdequadoParaOValor(int valor, List<Termo> termos) {
 		Termo termoEncontrado = new Termo();
 		int menorDistancia = Integer.MAX_VALUE;
 		for (Termo termo : termos) {

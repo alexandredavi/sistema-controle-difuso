@@ -22,12 +22,7 @@ public class FuncaoAtivacaoTest {
 		Variavel potencia = new Variavel();
 
 		potencia.setDescricao("Potencia");
-		
-		Universo universo = new Universo();
-		universo.setInicio(0);
-		universo.setFim(100);
-		
-		potencia.setUniverso(universo);
+		potencia.setUniverso(new Universo(0, 100));
 		
 		Termo minima = new Termo();
 		minima.setDescricao("Minima");
@@ -87,22 +82,19 @@ public class FuncaoAtivacaoTest {
 		
 		FuncaoDeAtivacao.calculaValorDeAtivacao(potencia, Arrays.asList(idade, frequencia));
 		
-//		Assert.assertEquals(0.2, maxima.getValorAtivacao(), 0.0001);
-//		Assert.assertEquals(0.75, medio.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.2, maxima.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.75, medio.getValorAtivacao(), 0.0001);
 		
 		FuncaoDeDefuzzificacao.deffuzifica(potencia);
+		
+		System.out.println(potencia.getValorDeffuzificado());
 		
 	}
 	
 	private Variavel variavelIdade() {
 		Variavel idade = new Variavel();
 		idade.setDescricao("Idade");
-		
-		Universo universo = new Universo();
-		universo.setInicio(0);
-		universo.setFim(90);
-		
-		idade.setUniverso(universo);
+		idade.setUniverso(new Universo(0, 90));
 
 		Termo jovem = new Termo();
 		jovem.setDescricao("Jovem");
@@ -135,12 +127,7 @@ public class FuncaoAtivacaoTest {
 	private Variavel variavelFrequencia() {
 		Variavel frequencia = new Variavel();
 		frequencia.setDescricao("Frequencia");
-		
-		Universo universo = new Universo();
-		universo.setInicio(50);
-		universo.setFim(200);
-		
-		frequencia.setUniverso(universo);
+		frequencia.setUniverso(new Universo(50, 200));
 
 		Termo baixa = new Termo();
 		baixa.setDescricao("Baixa");
