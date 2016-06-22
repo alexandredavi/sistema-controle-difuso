@@ -69,16 +69,16 @@ public class FuncaoAtivacaoTest {
 		condicaoFCAlta.setVariavel(frequencia);
 		condicaoFCAlta.setTermo(frequencia.getTermos().get(2));
 		
-		minima.setCondicoes(Arrays.asList(condicaoFCAlta));
-		medio.setCondicoes(Arrays.asList(condicaoIdadeAdulta, condicaoFCModerada));
-		maxima.setCondicoes(Arrays.asList(condicaoIdadeJovem, condicaoFCAlta));
+		maxima.setCondicoes(Arrays.asList(condicaoIdadeAdulta, condicaoFCModerada));
+		medio.setCondicoes(Arrays.asList(condicaoIdadeJovem, condicaoFCAlta));
+		//maxima.setCondicoes(Arrays.asList(condicaoIdadeJovem, condicaoFCAlta));
 		
 		potencia.getTermos().add(minima);
 		potencia.getTermos().add(medio);
 		potencia.getTermos().add(maxima);
 		
-		FuncaoDePertinencia.fuzzifica(idade, 52);
-		FuncaoDePertinencia.fuzzifica(frequencia, 170);
+		FuncaoDePertinencia.fuzzifica(idade, 22);
+		FuncaoDePertinencia.fuzzifica(frequencia, 135);
 		
 		FuncaoDeAtivacao.calculaValorDeAtivacao(potencia, Arrays.asList(idade, frequencia));
 		
@@ -207,34 +207,35 @@ public class FuncaoAtivacaoTest {
 
 		Condicao condicaoUmidadeBaixa = new Condicao();
 		condicaoUmidadeBaixa.setVariavel(umidade);
-		condicaoUmidadeBaixa.setTermo(umidade.getTermos().get(1));
+		condicaoUmidadeBaixa.setTermo(umidade.getTermos().get(0));
 
 		Condicao condicaoUmidadeMedia = new Condicao();
 		condicaoUmidadeMedia.setVariavel(umidade);
-		condicaoUmidadeMedia.setTermo(umidade.getTermos().get(2));
+		condicaoUmidadeMedia.setTermo(umidade.getTermos().get(1));
 		
 		Condicao condicaoUmidadeAlta = new Condicao();
 		condicaoUmidadeAlta.setVariavel(umidade);
 		condicaoUmidadeAlta.setTermo(umidade.getTermos().get(2));
 
 		pequeno.setCondicoes(Arrays.asList(condicaoTemperaturaFria, condicaoUmidadeAlta));
-		medio.setCondicoes(Arrays.asList(condicaoTemperaturaMedia, condicaoTemperaturaMedia));
-		medio.setCondicoes(Arrays.asList(condicaoTemperaturaFria, condicaoTemperaturaMedia));
+		medio.setCondicoes(Arrays.asList(condicaoTemperaturaMedia, condicaoUmidadeMedia));
 		grande.setCondicoes(Arrays.asList(condicaoTemperaturaQuente, condicaoUmidadeBaixa));
 
 		irrigacao.getTermos().add(pequeno);
 		irrigacao.getTermos().add(medio);
 		irrigacao.getTermos().add(grande);
 
-//		FuncaoDePertinencia.fuzzifica(temperatura, 16);
-//		FuncaoDePertinencia.fuzzifica(umidade, 58.5);
-//
-//		FuncaoDeAtivacao.calculaValorDeAtivacao(irrigacao, Arrays.asList(temperatura, umidade));
+		FuncaoDePertinencia.fuzzifica(temperatura, 16);
+		FuncaoDePertinencia.fuzzifica(umidade, 58.5);
 
-		// Assert.assertEquals(0.2, maxima.getValorAtivacao(), 0.0001);
-		// Assert.assertEquals(0.75, medio.getValorAtivacao(), 0.0001);
+		FuncaoDeAtivacao.calculaValorDeAtivacao(irrigacao, Arrays.asList(temperatura, umidade));
 
-//		FuncaoDeDefuzzificacao.deffuzifica(irrigacao);
+		Assert.assertEquals(0.34, pequeno.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.6, medio.getValorAtivacao(), 0.0001);
+
+		FuncaoDeDefuzzificacao.deffuzifica(irrigacao);
+		
+		System.out.println(irrigacao.getValorDeffuzificado());
 
 	}
 
