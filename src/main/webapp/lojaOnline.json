@@ -457,14 +457,14 @@
                      ]
                   },
                   "termo":{
-                     "descricao":"Moderado",
+                     "descricao":"Demorado",
                      "suporte":{
-                        "inicio":3,
-                        "fim":9
+                        "inicio":6,
+                        "fim":12
                      },
                      "nucleo":{
-                        "inicio":6,
-                        "fim":6
+                        "inicio":9,
+                        "fim":12
                      },
                      "condicoes":[
 
@@ -473,7 +473,7 @@
                      "valorAtivacao":0.0,
                      "quantidadeDeValoresDoUniverso":0
                   }
-               },               
+               },
                {
                   "variavel":{
                      "descricao":"Valor",
@@ -621,14 +621,14 @@
                      ]
                   },
                   "termo":{
-                     "descricao":"Demorado",
+                     "descricao":"Moderado",
                      "suporte":{
-                        "inicio":6,
-                        "fim":12
+                        "inicio":3,
+                        "fim":9
                      },
                      "nucleo":{
-                        "inicio":9,
-                        "fim":12
+                        "inicio":6,
+                        "fim":6
                      },
                      "condicoes":[
 

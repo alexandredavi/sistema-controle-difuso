@@ -230,13 +230,7 @@ public class FuncaoAtivacaoTest {
 
 		FuncaoDeAtivacao.calculaValorDeAtivacao(irrigacao, Arrays.asList(temperatura, umidade));
 
-		Assert.assertEquals(0.34, pequeno.getValorAtivacao(), 0.0001);
-		Assert.assertEquals(0.6, medio.getValorAtivacao(), 0.0001);
-
 		FuncaoDeDefuzzificacao.deffuzifica(irrigacao);
-		
-		System.out.println(irrigacao.getValorDeffuzificado());
-
 	}
 
 	private Variavel variavelTemperatura() {

@@ -68,17 +68,17 @@ public class LojaOnlineTest {
 		condicaoTempoEntregaDemorado.setTermo(tempoEntrega.getTermos().get(2));
 
 		ruim.setCondicoes(Arrays.asList(condicaoValorMedio, condicaoTempoEntregaDemorado, condicaoValorCaro,
-				condicaoTempoEntregaMedio, condicaoValorCaro, condicaoTempoEntregaDemorado));
+				condicaoTempoEntregaDemorado, condicaoValorCaro, condicaoTempoEntregaMedio));
 		qualidadeServico.getTermos().add(ruim);
 
 		medio.setCondicoes(Arrays.asList(condicaoValorBarato, condicaoTempoEntregaDemorado, condicaoValorMedio,
 				condicaoTempoEntregaMedio, condicaoValorCaro, condicaoTempoEntregaRapido));
 		qualidadeServico.getTermos().add(medio);
-
+		
 		bom.setCondicoes(Arrays.asList(condicaoValorBarato, condicaoTempoEntregaRapido, condicaoValorBarato,
 				condicaoTempoEntregaMedio, condicaoValorMedio, condicaoTempoEntregaRapido));
 		qualidadeServico.getTermos().add(bom);
-
+		
 		Algoritmo algoritmo = new Algoritmo(Arrays.asList(valor, tempoEntrega, qualidadeServico));
 		algoritmo.processar();
 
@@ -88,7 +88,7 @@ public class LojaOnlineTest {
 		Variavel valor = new Variavel();
 		valor.setDescricao("Valor");
 		valor.setUniverso(new Universo(0, 100));
-		valor.setValorCrisp(50);
+		valor.setValorCrisp(60);
 
 		Termo barato = new Termo();
 		barato.setDescricao("Barato");
@@ -122,7 +122,7 @@ public class LojaOnlineTest {
 		Variavel tempoEntrega = new Variavel();
 		tempoEntrega.setDescricao("Tempo de Entrega");
 		tempoEntrega.setUniverso(new Universo(1, 12));
-		tempoEntrega.setValorCrisp(4);
+		tempoEntrega.setValorCrisp(7);
 
 		Termo rapido = new Termo();
 		rapido.setDescricao("Rápido");
