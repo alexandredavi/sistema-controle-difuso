@@ -2,6 +2,7 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
 
     $scope.variaveis = [];
     $scope.variavelObjetivo;
+    $scope.resultado = [];
 
     $scope.adicionarVariavel = function (variavel) {
         defineVariavelObjetivo(variavel);
@@ -112,11 +113,22 @@ angular.module("scd").controller("scdCtrl", function ($scope, $http) {
     $scope.adicionarCondicao = function() {
         $scope.termoObjetivo.condicoes.push({});
     }
-    
+
     $scope.processar = function(variaveis) {
-        $http.post("/sistema-controle-difuso/rest/algoritmoREST", variaveis).success(function(data) {
-            console.log(data);
-        });
+        // $http.post("/sistema-controle-difuso/rest/algoritmoREST", variaveis).success(function(data) {
+        //     console.log(data);
+
+        // });
+
+        $.ajax({
+            dataType: "json",
+            url: "teste.json",
+            mimeType: "application/json",
+            success: function(json) {                
+                $scope.resultado = json;
+                console.table($scope.resultado);
+            }
+        });        
     }
     
 });
