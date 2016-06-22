@@ -3,6 +3,7 @@ package com.scd;
 import java.util.List;
 
 import com.scd.funcoes.FuncaoDeAtivacao;
+import com.scd.funcoes.FuncaoDeDefuzzificacao;
 import com.scd.funcoes.FuncaoDePertinencia;
 import com.scd.model.Variavel;
 import com.scd.utils.AlgoritmoUtils;
@@ -20,6 +21,7 @@ public class Algoritmo {
 		
 		Variavel objetivo = AlgoritmoUtils.getVariavelObjetivo(variaveis);
 		FuncaoDeAtivacao.calculaValorDeAtivacao(objetivo, variaveis);
+		FuncaoDeDefuzzificacao.deffuzifica(objetivo);
 		
 		return variaveis;
 	}

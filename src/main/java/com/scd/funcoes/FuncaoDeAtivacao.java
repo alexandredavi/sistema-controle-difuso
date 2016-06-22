@@ -11,6 +11,7 @@ public class FuncaoDeAtivacao {
 	public static void calculaValorDeAtivacao(Variavel variavel, List<Variavel> variaveis) {
 		for(Termo termo : variavel.getTermos()) {
 			double menorValor = Double.MAX_VALUE;
+			boolean temCondicao = false;
 			for(Condicao condicao : termo.getCondicoes()) {
 				int indexOfVariavel = variaveis.indexOf(condicao.getVariavel());
 				Variavel variavelCondicao = variaveis.get(indexOfVariavel);
@@ -20,9 +21,14 @@ public class FuncaoDeAtivacao {
 			
 				double valorFuzzificado = termoCondicao.getValorFuzzificado();
 				menorValor = Double.min(menorValor, valorFuzzificado);
+				temCondicao = true;
 			}
-			System.out.println(termo.getDescricao() + " - " + menorValor);
-			termo.setValorAtivacao(menorValor);
+			if (!temCondicao) {
+				termo.setValorAtivacao(0D);
+			} else {
+				termo.setValorAtivacao(menorValor);
+			}
+			System.out.println(termo.getDescricao() + " - " + termo.getValorAtivacao());
 		}
 		System.out.println();
 	}

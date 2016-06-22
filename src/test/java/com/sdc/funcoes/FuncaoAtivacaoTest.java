@@ -6,9 +6,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.scd.funcoes.FuncaoDeAtivacao;
+import com.scd.funcoes.FuncaoDeDefuzzificacao;
 import com.scd.funcoes.FuncaoDePertinencia;
 import com.scd.model.Condicao;
 import com.scd.model.Termo;
+import com.scd.model.Universo;
 import com.scd.model.Variavel;
 
 public class FuncaoAtivacaoTest {
@@ -20,6 +22,8 @@ public class FuncaoAtivacaoTest {
 		Variavel potencia = new Variavel();
 
 		potencia.setDescricao("Potencia");
+		potencia.setUniverso(new Universo(0, 100));
+
 		
 		Termo minima = new Termo();
 		minima.setDescricao("Minima");
@@ -70,14 +74,19 @@ public class FuncaoAtivacaoTest {
 		
 		FuncaoDeAtivacao.calculaValorDeAtivacao(potencia, Arrays.asList(idade, frequencia));
 		
-//		Assert.assertEquals(0.2, maxima.getValorAtivacao(), 0.0001);
-//		Assert.assertEquals(0.75, medio.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.2, maxima.getValorAtivacao(), 0.0001);
+		Assert.assertEquals(0.75, medio.getValorAtivacao(), 0.0001);
+		
+		FuncaoDeDefuzzificacao.deffuzifica(potencia);
+		
+		System.out.println(potencia.getValorDeffuzificado());
 		
 	}
 	
 	private Variavel variavelIdade() {
 		Variavel idade = new Variavel();
 		idade.setDescricao("Idade");
+		idade.setUniverso(new Universo(0, 90));
 
 		Termo jovem = new Termo();
 		jovem.setDescricao("Jovem");
@@ -111,6 +120,7 @@ public class FuncaoAtivacaoTest {
 	private Variavel variavelFrequencia() {
 		Variavel frequencia = new Variavel();
 		frequencia.setDescricao("Frequencia");
+		frequencia.setUniverso(new Universo(50, 200));
 
 		Termo baixa = new Termo();
 		baixa.setDescricao("Baixa");
