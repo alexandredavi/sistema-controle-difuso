@@ -10,19 +10,21 @@ public class FuncaoDeAtivacao {
 
 	public static void calculaValorDeAtivacao(Variavel variavel, List<Variavel> variaveis) {
 		for(Termo termo : variavel.getTermos()) {
-			double menorValor = Double.MAX_VALUE;
-			for(Condicao condicao : termo.getCondicoes()) {
-				int indexOfVariavel = variaveis.indexOf(condicao.getVariavel());
-				Variavel variavelCondicao = variaveis.get(indexOfVariavel);
-				
-				int indexOfTermo = variavelCondicao.getTermos().indexOf(condicao.getTermo());
-				Termo termoCondicao = variavelCondicao.getTermos().get(indexOfTermo);
-			
-				double valorFuzzificado = termoCondicao.getValorFuzzificado();
-				menorValor = Double.min(menorValor, valorFuzzificado);
+			if (!termo.getCondicoes().isEmpty()) {
+				double menorValor = Double.MAX_VALUE;
+				for(Condicao condicao : termo.getCondicoes()) {
+					int indexOfVariavel = variaveis.indexOf(condicao.getVariavel());
+					Variavel variavelCondicao = variaveis.get(indexOfVariavel);
+					
+					int indexOfTermo = variavelCondicao.getTermos().indexOf(condicao.getTermo());
+					Termo termoCondicao = variavelCondicao.getTermos().get(indexOfTermo);
+					
+					double valorFuzzificado = termoCondicao.getValorFuzzificado();
+					menorValor = Double.min(menorValor, valorFuzzificado);
+				}
+				System.out.println(termo.getDescricao() + " - " + menorValor);
+				termo.setValorAtivacao(menorValor);
 			}
-			System.out.println(termo.getDescricao() + " - " + menorValor);
-			termo.setValorAtivacao(menorValor);
 		}
 		System.out.println();
 	}
