@@ -28,7 +28,6 @@
                         </tr>
                         <tr ng-repeat="variavel in variaveis">
                             <td>{{variavel.descricao}}</td>
-                            <!-- <td>{{variavel.objetivo}}</td> -->
                             <td>
 								<label>
                                 	<input type="radio" name="objetivo" ng-click="salvarVariavel(variavel)" ng-model="variavel.objetivo" value="Sim"> Sim
@@ -167,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-show="variavelObjetivo.termos.length > 0">
         	<div class="col-sm-4"></div>
         	<div class="col-sm-4">
         		<div class="panel panel-default">
@@ -186,18 +185,51 @@
             </div>
             <div class="col-sm-4"></div>
         </div>
-        <div class="row">
+        <div class="row" ng-show="resultado.length > 0">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body">Resultado</div>                
-                    <table class="table table-striped table-bordered">
-                        <tr ng-repeat="variavel in resultado">
-                            <td>{{variavel</td>
+                    <div class="panel-heading">Fuzificação</div>                
+                    <table class="table table-striped table-bordered" ng-repeat="variavel in resultado | filter:{objetivo: '!Sim'}">
+                        <tr>                        
+                            <th style="width:25%">{{variavel.descricao}}</th>
+                            <th style="width:25%" ng-repeat="termo in variavel.termos">{{termo.descricao}}</th>
                         </tr>
+                        <tr>                        
+                            <td>{{variavel.valorCrisp}}</td>
+                            <td ng-repeat="termo in variavel.termos">{{termo.valorFuzzificado}}</td>
+                        </tr>                        
                     </table>                    
                 </div>
             </div>
-        </div>
+
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Ativação dos Antecedentes</div>                
+                    <div class="panel-body">
+                        <div ng-repeat="regra in regras">
+                            <h4>{{regra.descricao}}</h4>
+                            <span ng-repeat="linha in regra.linhas" class="indent">
+                                {{linha.condicao}}
+                                <span class="black">{{linha.valor}}</span>
+                            </span>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Defuzificação</div>
+                    <table class="table table-striped table-bordered" ng-repeat="variavel in resultado | filter:{objetivo: 'Sim'}">
+                        <tr>                        
+                            <th>{{variavel.descricao}}</th>
+                            <th>{{variavel.valorDeffuzificado}}</th>
+                        </tr>
+                    </table>  
+                    <!-- INSERIR GRÁFICO -->                                                       
+                </div>
+            </div>
+        </div>         
     </div>
     <!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
